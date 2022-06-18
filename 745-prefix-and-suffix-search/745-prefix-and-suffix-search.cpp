@@ -9,16 +9,18 @@ public:
     unordered_map<string,int>dict;
     WordFilter(vector <string> &words) {
         for (int i = 0; i < words.size(); i++) {
-            vector <string> suf(words[i].size() + 1), pre(words[i].size() + 1);
             string s = "", p = "",x=words[i];
+            vector <string> suf(x.size() ), pre(x.size());
             for (int j = 0; j < x.size(); j++) {
                 p += x[j];
                 s+=x[x.size()-j-1];
-                pre[j + 1] = p, suf[j] = s;
+                pre[j ] = p, suf[j] = s;
             }
+            pre.push_back(""),suf.push_back("");
             for(int k=0;k<pre.size();k++)
                 for(int j=0;j<suf.size();j++)
                     dict[pre[k]+"&"+suf[j]]=i;
+           
         }
     }
     int f(string prefix, string suffix) {
