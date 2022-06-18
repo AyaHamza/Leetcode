@@ -10,12 +10,10 @@ public:
     WordFilter(vector <string> &words) {
         for (int i = 0; i < words.size(); i++) {
             vector <string> suf(words[i].size() + 1), pre(words[i].size() + 1);
-            string s = "", p = "",c,x=words[i];
-            pre[0] = p, suf[s.size()] = s;
+            string s = "", p = "",x=words[i];
             for (int j = 0; j < x.size(); j++) {
                 p += x[j];
-                c=x[words[i].size()-j-1]+s;
-                s=c;
+                s+=x[x.size()-j-1];
                 pre[j + 1] = p, suf[j] = s;
             }
             for(int k=0;k<pre.size();k++)
@@ -24,6 +22,7 @@ public:
         }
     }
     int f(string prefix, string suffix) {
+        reverse(suffix.begin(),suffix.end());
         string s=prefix+"&"+suffix;
         if( dict.find(s)==dict.end())
             return -1;
