@@ -10,21 +10,19 @@ public:
     WordFilter(vector <string> &words) {
         for (int i = 0; i < words.size(); i++) {
             vector <string> suf(words[i].size() + 1), pre(words[i].size() + 1);
-            string s = "", p = "",c;
+            string s = "", p = "",c,x=words[i];
             pre[0] = p, suf[s.size()] = s;
-            for (int j = 0; j < words[i].size(); j++) {
-                p += words[i][j];
-                c=words[i][words[i].size()-j-1];
-                c+=s;
+            for (int j = 0; j < x.size(); j++) {
+                p += x[j];
+                c=x[words[i].size()-j-1]+s;
                 s=c;
-                pre[j + 1] = p, suf[words[i].size() - j - 1] = s;
+                pre[j + 1] = p, suf[j] = s;
             }
             for(int k=0;k<pre.size();k++)
                 for(int j=0;j<suf.size();j++)
                     dict[pre[k]+"&"+suf[j]]=i;
         }
     }
-
     int f(string prefix, string suffix) {
         string s=prefix+"&"+suffix;
         if( dict.find(s)==dict.end())
