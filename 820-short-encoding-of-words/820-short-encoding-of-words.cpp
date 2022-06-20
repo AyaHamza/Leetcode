@@ -6,7 +6,6 @@ using namespace std;
 class Solution {
 public:
     static bool cmp(string &b, string &a) { return a.size() < b.size(); }
-
     int minimumLengthEncoding(vector<string> &words) {
         int ans = 0;
         map<string, int> mp;
