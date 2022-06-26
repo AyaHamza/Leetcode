@@ -6,7 +6,7 @@ public:
         for ( ; i < k; i++)
             sum += cardPoints[i];
         ans = max(ans, sum),i--;
-        while (i >= 0 && j >= cardPoints.size() - k) 
+        while (i >= 0 && k--) 
             sum -= cardPoints[i], sum += cardPoints[j], i--, j--,ans = max(ans, sum);
         return ans;
     }
