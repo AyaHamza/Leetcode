@@ -1,7 +1,5 @@
 class Solution {
 public:
-
-    int n,m;
     long long  dp[102][102];
     long long GetAns(int i,int j){
         if(i==0&&j==0)
@@ -17,7 +15,6 @@ public:
     }
     int uniquePaths(int x, int y) {
         memset(dp,-1,sizeof dp);
-        n=x,m=y;
         return GetAns(x-1,y-1);
     }
 };
