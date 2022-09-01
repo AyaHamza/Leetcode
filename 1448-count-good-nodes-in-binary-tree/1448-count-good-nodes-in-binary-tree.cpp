@@ -12,11 +12,7 @@
 class Solution {
 public:
    int goodNodes(TreeNode* root,int mx=INT_MIN) {
-        int c=0;
-        if(root->val>=mx)c++;
-        if(root->left!=nullptr)c+= goodNodes(root->left,max(mx,root->val));
-        if(root->right!= nullptr)c+= goodNodes(root->right,max(mx,root->val));
-        return c;
-        
+       if(root==nullptr)return 0;
+        return goodNodes(root->left,max(mx,root->val))+ goodNodes(root->right,max(mx,root->val))+(root->val>=mx);
     }
 };
