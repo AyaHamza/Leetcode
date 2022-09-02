@@ -17,16 +17,14 @@ public:
         vector<double>Avg;
         vector<int>Level;
         while (q.size()) {
-            if (Avg.size() < q.front().second + 1)
-                Avg.push_back(q.front().first->val),Level.push_back(1);
-            else {
+            if(q.front().first!= nullptr) {
+                if (Avg.size() < q.front().second + 1)
+                    Avg.push_back(0), Level.push_back(0);
                 Level[q.front().second]++;
-                Avg[q.front().second] += q.front().first->val ;
-            }
-            if (q.front().first->left != nullptr)
+                Avg[q.front().second] += q.front().first->val;
                 q.push({q.front().first->left, q.front().second + 1});
-             if (q.front().first->right != nullptr)
                 q.push({q.front().first->right, q.front().second + 1});
+            }
             q.pop();
         }
         for(int i=0;i<Avg.size();i++)
