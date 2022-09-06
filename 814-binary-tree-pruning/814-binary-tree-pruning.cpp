@@ -15,22 +15,15 @@ map<TreeNode*,int>mp;
     int DFS(TreeNode* node){
         if(node== nullptr)return 0;
         mp[node]=node->val+DFS(node->left)+ DFS(node->right);
+        if(node->right!=nullptr&&!mp[node->right])
+            node->right=nullptr;
+        if(node->left!=nullptr&&!mp[node->left])
+            node->left=nullptr;
         return mp[node];
-    }
-    void GetAns(TreeNode* Node){
-        if(Node->right!= nullptr) {
-            if (mp[Node->right] == 0) Node->right = nullptr;
-            else GetAns(Node->right);
-        }
-        if(Node->left!= nullptr) {
-            if (mp[Node->left] == 0) Node->left = nullptr;
-            else GetAns(Node->left);
-        }
     }
     TreeNode* pruneTree(TreeNode* root) {
         DFS(root);
         if(mp[root]==0)root= nullptr;
-        else GetAns(root);
         return root;
     }
 };
