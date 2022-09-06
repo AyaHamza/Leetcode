@@ -11,14 +11,11 @@
  */
 class Solution {
 public:
-int id;
 map<TreeNode*,int>mp;
     int DFS(TreeNode* node){
         if(node== nullptr)return 0;
-        int c=node->val;
-        c+=DFS(node->left)+ DFS(node->right);
-        mp[node]=c;
-        return c;
+        mp[node]=node->val+DFS(node->left)+ DFS(node->right);
+        return mp[node];
     }
     void GetAns(TreeNode* Node){
         if(Node->right!= nullptr) {
