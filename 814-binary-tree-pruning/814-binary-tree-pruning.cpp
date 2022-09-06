@@ -22,8 +22,7 @@ public:
         return L+R+node->val;
     }
     TreeNode* pruneTree(TreeNode* root) {
-        int v=DFS(root);
-        if(!v)root= nullptr;
+        if( !DFS(root))root= nullptr;
         return root;
     }
 };
