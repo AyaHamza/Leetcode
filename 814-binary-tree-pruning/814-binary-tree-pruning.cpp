@@ -11,19 +11,19 @@
  */
 class Solution {
 public:
-map<TreeNode*,int>mp;
     int DFS(TreeNode* node){
         if(node== nullptr)return 0;
-        mp[node]=node->val+DFS(node->left)+ DFS(node->right);
-        if(node->right!=nullptr&&!mp[node->right])
+        int L=0,R=0;
+        L=DFS(node->left),R=DFS(node->right);
+        if(node->right!=nullptr&&!R)
             node->right=nullptr;
-        if(node->left!=nullptr&&!mp[node->left])
+        if(node->left!=nullptr&&!L)
             node->left=nullptr;
-        return mp[node];
+        return L+R+node->val;
     }
     TreeNode* pruneTree(TreeNode* root) {
-        DFS(root);
-        if(mp[root]==0)root= nullptr;
+        int v=DFS(root);
+        if(!v)root= nullptr;
         return root;
     }
 };
