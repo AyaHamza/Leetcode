@@ -11,7 +11,7 @@ public:
         for (int i = n - 1; i >= 0; i--) {
             sum += engineers[i].second;
             while (pq.size() > k-1) {
-                sum =(sum+ pq.top()+mod)%mod;
+                sum =(sum+ pq.top())%mod;
                 pq.pop();
             }
             pq.push(engineers[i].second * -1);
