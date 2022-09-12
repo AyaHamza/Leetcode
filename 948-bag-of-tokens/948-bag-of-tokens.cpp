@@ -4,7 +4,6 @@ public:
        int e=tokens.size()-1,score=0,mx=0;
         sort(tokens.begin(),tokens.end());
        for(int i=0;i<=e;i++){
-           
            if(tokens[i]<=power)
                power-=tokens[i],score++;
            else if(score>0){
