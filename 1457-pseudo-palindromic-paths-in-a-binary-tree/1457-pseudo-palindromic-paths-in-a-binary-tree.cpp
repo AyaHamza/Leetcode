@@ -13,23 +13,20 @@ class Solution {
 public:
     int ans;
     int fr[10];
+    bool Valid(){
+        int c=0;
+        for(int i=0;i<10;i++)
+            if(fr[i]%2!=0)
+               c++;
+        return c<=1;
+    }
     void GetAns(TreeNode* node){
         if(node==nullptr)
            return;
          fr[node->val]++;
-        if(node->right==nullptr&&node->left==nullptr){
-          
-        int c=-1,valid=1;
-        for(int i=0;i<10;i++){
-            if(fr[i]%2!=0){
-                if(c==-1)c=i;
-                else valid=0;
-            }
-        }
-        if(valid)
-            ans++;
-        }
-       
+        if(node->right==nullptr&&node->left==nullptr)
+            if(Valid())
+                ans++;
         GetAns(node->right);
         GetAns(node->left);
         fr[node->val]--;
