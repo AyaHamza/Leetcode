@@ -13,23 +13,20 @@ class Solution {
 public:
     int ans;
     int fr[10];
-    bool Valid(){
-        int c=0;
-        for(int i=0;i<10;i++)
-            if(fr[i]%2!=0)
-               c++;
-        return c<=1;
-    }
+    int c;
     void GetAns(TreeNode* node){
         if(node==nullptr)
            return;
          fr[node->val]++;
-        if(node->right==nullptr&&node->left==nullptr)
-            if(Valid())
-                ans++;
+        if(fr[node->val]%2!=0)c++;
+        else c--;
+        if(node->right==nullptr&&node->left==nullptr&&c<=1)
+            ans++;
         GetAns(node->right);
         GetAns(node->left);
-        fr[node->val]--;
+        if(fr[node->val]%2!=0)c--;
+        else c++;
+         fr[node->val]--;
     }
     int pseudoPalindromicPaths (TreeNode* root) {
         GetAns(root);
