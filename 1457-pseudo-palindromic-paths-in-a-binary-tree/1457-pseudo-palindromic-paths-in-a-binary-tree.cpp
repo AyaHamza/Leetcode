@@ -11,22 +11,19 @@
  */
 class Solution {
 public:
-    int ans;
+    int ans,c;
     int fr[10];
-    int c;
     void GetAns(TreeNode* node){
         if(node==nullptr)
            return;
-         fr[node->val]++;
-        if(fr[node->val]%2!=0)c++;
-        else c--;
+        fr[node->val]++;
+        fr[node->val]%2!=0?c++:c--;
         if(node->right==nullptr&&node->left==nullptr&&c<=1)
             ans++;
         GetAns(node->right);
         GetAns(node->left);
-        if(fr[node->val]%2!=0)c--;
-        else c++;
-         fr[node->val]--;
+        fr[node->val]%2!=0?c--:c++;
+        fr[node->val]--;
     }
     int pseudoPalindromicPaths (TreeNode* root) {
         GetAns(root);
