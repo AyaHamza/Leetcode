@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    long long  ans,c, x;
+    int  ans,c, x;
     void GetAns(TreeNode* node){
         if(node==nullptr)
            return;
