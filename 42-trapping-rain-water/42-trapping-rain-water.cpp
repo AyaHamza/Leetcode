@@ -9,11 +9,9 @@ public:
         }
         mx=0;
         for(int i=0;i<height.size();i++){
-            x=min(mx,h[i]);
-            if(x>height[i])
-                ans+=x-height[i];
+            if(min(mx,h[i])>height[i])
+                ans+=min(mx,h[i])-height[i];
             mx=max(mx,height[i]);
-
         }
         return ans;
     }
