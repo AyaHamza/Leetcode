@@ -2,7 +2,7 @@ class Solution {
 public:
     int trap(vector<int>& height) {
        vector<int>h(height.size());
-        int mx=0,x,ans=0;
+        int mx=0,ans=0;
         for(int i=height.size()-1;i>=0;i--){
          h[i]=mx;
          mx=max(mx,height[i]);
