@@ -12,7 +12,6 @@ public:
             else word+=s[i];
         }
         reverse(word.begin(),word.end());
-        ans+=word;
-        return ans;
+        return ans+word;
     }
 };
