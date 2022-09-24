@@ -13,20 +13,12 @@ class Solution {
 public:
     vector<vector<int>>ans;
     vector<int>path;
-    
     int TargetSum,sum;
-    void GetAns(TreeNode* node){
-        
-       if(node==nullptr)
-           return;
+    void GetAns(TreeNode* node){ 
         sum+=node->val;
         path.push_back(node->val);
-                cout<<node->val<<" "<<sum<<endl;
-
-        if(node->left==nullptr&&node->right==nullptr){
-            if(sum==TargetSum)
-                ans.push_back(path);
-        }
+        if(node->left==nullptr&&node->right==nullptr&&sum==TargetSum)
+            ans.push_back(path);
         if(node->left!=nullptr)
             GetAns(node->left);
         if(node->right!=nullptr)
@@ -38,7 +30,7 @@ public:
     
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
         TargetSum=targetSum;
-        vector<int>v;
+        if(root!=nullptr)
         GetAns(root);
         return ans;
     }
