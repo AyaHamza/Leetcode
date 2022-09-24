@@ -12,26 +12,34 @@
 class Solution {
 public:
     vector<vector<int>>ans;
-    int TargetSum;
-    void GetAns(TreeNode* node,int sum,vector<int> path){
+    vector<int>path;
+    
+    int TargetSum,sum;
+    void GetAns(TreeNode* node){
+        
        if(node==nullptr)
            return;
         sum+=node->val;
         path.push_back(node->val);
+                cout<<node->val<<" "<<sum<<endl;
+
         if(node->left==nullptr&&node->right==nullptr){
             if(sum==TargetSum)
                 ans.push_back(path);
-            return ;
         }
-        GetAns(node->left,sum,path);
-        GetAns(node->right,sum,path);
+        if(node->left!=nullptr)
+            GetAns(node->left);
+        if(node->right!=nullptr)
+            GetAns(node->right);
+        sum-=node->val;
+        path.pop_back();
 
     }
     
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
         TargetSum=targetSum;
         vector<int>v;
-        GetAns(root,0,v);
+        GetAns(root);
         return ans;
     }
 };
