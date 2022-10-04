@@ -19,6 +19,6 @@ public:
         return Check(node->left,targetsum-node->val)||Check(node->right,targetsum-node->val);
     }
     bool hasPathSum(TreeNode* root, int targetSum) {
-       return Check(root,targetSum)&&root!=nullptr; 
+       return Check(root,targetSum); 
     }
 };
