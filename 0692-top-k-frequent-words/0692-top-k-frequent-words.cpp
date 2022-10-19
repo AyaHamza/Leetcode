@@ -1,13 +1,8 @@
 class Solution {
 public:
-   static bool compare(string s, string t) {
-        for (int i = 0; i < min(s.size(), t.size()); i++)
-            if (s[i] < t[i]) return true;
-            else if (s[i] > t[i])return false;
-        return s.size() < t.size() ? true : false;
-    }
+   
    static bool cmp(pair<string, int> &x, pair<string, int> &y) {
-        return ((x.second > y.second) || (x.second == y.second && compare(x.first, y.first)));
+        return ((x.second > y.second) || (x.second == y.second &&x.first<y.first));
     }
     vector <string> topKFrequent(vector <string> &words, int k) {
         map<string, int> mp;
