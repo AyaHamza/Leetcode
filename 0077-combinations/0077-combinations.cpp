@@ -7,10 +7,10 @@ public:
             if(i>n&&nums.size()==k)ans.push_back(nums);
             return;
         }
+        get_comb(i+1,n,k);
         nums.push_back(i);
         get_comb(i+1,n,k);
         nums.pop_back();
-        get_comb(i+1,n,k);
         
     }
     vector<vector<int>> combine(int n, int k) {
