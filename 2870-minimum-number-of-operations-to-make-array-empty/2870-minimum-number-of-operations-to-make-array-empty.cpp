@@ -1,17 +1,17 @@
 class Solution {
 public:
-    int freq[1000005];
+    map<int,int>freq;
     int minOperations(vector<int>& nums) {
         long long ans=0;
         for(int i=0;i<nums.size();i++)
             freq[nums[i]]++;
-        for(int i=1;i<=1000000;i++){
-            if(freq[i]==0)
+        for(auto it :freq){
+            if(it.second==0)
                 continue;
-            else if(freq[i]==1) return -1;
-            if(freq[i]%3==0) ans+=(freq[i]/3);
-            else if(freq[i]%3==1) ans+=2+((freq[i]-4)/3);
-            else if(freq[i]%3==2) ans+=1+((freq[i]-2)/3);
+            else if(it.second==1) return -1;
+            if(it.second%3==0) ans+=(it.second/3);
+            else if(it.second%3==1) ans+=2+((it.second-4)/3);
+            else if(it.second%3==2) ans+=1+((it.second-2)/3);
         }
         return ans;
         
