@@ -1,19 +1,21 @@
 class Solution {
 public:
-    int get_vowels(string s,int st,int end){
-        int c=0;
-        for(int i=st;i<end;i++){
+    int countVowels(string s,int st,int end){
+        int vowelCount = 0;
+        for (int i = st; i < end; ++i) {
             char ch = tolower(s[i]);
-            if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u')
-                c++;
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                ++vowelCount;
+            }
         }
-            
-        return c;
+        return vowelCount;
     }
-    bool halvesAreAlike(string s) {
-        if(get_vowels(s,0,s.size()/2) != get_vowels(s,s.size()/2,s.size()))
-           return false;
-           return true;
-    
+
+    bool halvesAreAlike( std::string& s)  {
+        int mid = s.size() / 2;
+        int firstHalfVowels = countVowels(s, 0, mid);
+        int secondHalfVowels = countVowels(s, mid, s.size());
+
+        return (firstHalfVowels == secondHalfVowels);
     }
 };
